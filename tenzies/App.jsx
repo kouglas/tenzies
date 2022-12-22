@@ -21,7 +21,9 @@ import Die from "./Die";
 // console.log(allNewDice())
 
 export default function App() {
-
+    // setting state to hold
+    // new dice array and initialize
+    // it with allNewDice()
     const [dice, setDice] = React.useState(allNewDice())
 
     function allNewDice() {
@@ -35,11 +37,23 @@ export default function App() {
         // between 1 - 6 (inclusive(x & y))
         // rounding the values down so we get 
         // ints
-        .map(() =>  Math.floor(Math.random() * 6) + 1)
+        .map(() =>  Math.ceil(Math.random() * 6))
         // console.log(array)
         return array
     }
-
+    // generate new dice by
+    // using setDice and 
+    // calling allNewDice()
+    // will determine what 
+    // the new dice are
+    function rollDice() {
+        setDice(allNewDice())
+    }
+    // mapping over state numbers array to
+    // generate an array of die elements 
+    // to render / return 
+    // (look at each die and return a Die
+    // component )
     const diceElements = dice.map(die => <Die value={die} />)
 
     return (
@@ -47,6 +61,7 @@ export default function App() {
             <div className="dice-container">
                {diceElements}
             </div>
+            <button onClick={rollDice} className="roll-btn" >Roll</button>
         </main>
     )
 }
