@@ -64,3 +64,12 @@ main {
     cursor: pointer;
 
 }
+
+.title {
+    font-size: 40px;
+    margin: 0;
+}
+
+.title, p {
+    text-align: center;
+}
